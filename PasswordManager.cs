@@ -2,8 +2,33 @@
 static class PasswordManager
 {
 
-    static void login(DBInterface dbinterface, string loginQuery, string passwordQuery)
+    static void _loginExisting(DBInterface dbinterface)
     {
+        string loginQuery = "Welcome to your password manager!\nPlease enter your username and password to login\nUsername:";
+
+    }
+
+    static void _register(DBInterface dbinterface)
+    {
+        string registerQuery = "Welcome!\nPlease sign up with a username and password";
+        string usernameQuery = "Username:";
+        string passwordQuery = "Password:";
+        string username = ""
+        string password = ""
+
+        Console.WriteLine(registerQuery);
+        Console.WriteLine(usernameQuery);
+        username = Console.ReadLine();
+        Console.WriteLine(passwordQuery);
+        password = Console.ReadLine();
+
+        
+
+    }
+    static void _login(DBInterface dbinterface)
+    {
+        
+        string passwordQuery = "Password:";
         string userInput = "";
         while (!dbinterface.loggedIn())
         {
@@ -16,15 +41,11 @@ static class PasswordManager
             break;
         }
     }
-    static void mainLoop(DBInterface dbinterface)
+    static void _mainLoop(DBInterface dbinterface)
     {
-        string loginQuery = "Welcome to your password manager!\nPlease enter your username and password to login\nUsername:";
-
-        string passwordQuery = "Password:";
-
         string options = "Please enter the number corresponding to the option you choose\n 1) Add password\n 2) Delete password\n 3) Edit password information\n 4) List passwords\n 5) Quit";
 
-        login(dbinterface, loginQuery, passwordQuery);
+        _login(dbinterface);
 
         string userInput = "";
         while (userInput != Convert.ToString(5))
@@ -36,6 +57,6 @@ static class PasswordManager
     public static void Main()
     {
         DBInterface dbinterface = new DBInterface();
-        mainLoop(dbinterface);
+        _mainLoop(dbinterface);
     }
 }

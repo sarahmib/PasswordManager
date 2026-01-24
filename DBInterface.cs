@@ -10,4 +10,9 @@ class DBInterface
     {
         return false;
     }
+
+    public void register()
+    {
+        
+    }
 }
